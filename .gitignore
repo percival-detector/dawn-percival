@@ -1,0 +1,16 @@
+# IDE settings files
+.project
+.pydevproject
+.settings/
+
+# Python build files
+*.pyc
+
+# Editor backup files
+*.swp
+*~
+
+# HDF5 files
+*.h5
+*.hdf
+*.hdf5
