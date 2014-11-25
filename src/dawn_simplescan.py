@@ -53,11 +53,11 @@ for DAC_value in DAC_scan_values:
 # blocks until data capture is complete or stopped.
 pcvl.data.wait_complete(timeout = None)
 
-print "Opening file: %s, dataset: %s" % (pcvl.data.filename,  pcvl.data.datasetname)
 # Access the real data through dnp
+print "Opening file: %s, dataset: %s" % (pcvl.data.filename,  pcvl.data.datasetname)
 import scisoftpy as dnp
 h5file = dnp.io.load(pcvl.data.filename, format="hdf5")
 print h5file.keys()
 print "Acquire dataset dimensions: ", h5file['data'].shape 
-dnp.plot.image(h5file['data'], name="percival-scan", resetaxes=False)
+dnp.plot.image(h5file['data'][:,:], name="percival-scan", resetaxes=False)
 
