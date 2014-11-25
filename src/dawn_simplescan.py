@@ -32,12 +32,16 @@ nframes_total = nframes_per_step * len(DAC_scan_values)
 # Prepare to record the acquired data into a file with a timestamp in the name
 start_time = datetime.datetime.now() 
 data_filename = 'simplescan_demo_%s.h5'%start_time.isoformat()
+data_filename = data_filename.replace(":", "")
+#data_filename = "test.h5"
+print data_filename
 pcvl.data.start_capture(data_filename, nframes=nframes_total)
 
 # Scan through the desired DAC values
 for DAC_value in DAC_scan_values:
-    print "Setting DAC \'some_gain\' = %d"%DAC_value
+    
     # Set the desired control DAC parameter. In this example "some_gain"
+    print "Setting DAC \'some_gain\' = %d"%DAC_value
     pcvl.control.dacs.some_gain = DAC_value
     
     # Acquire 10 frames for each step with a 0.1s exposure per frame
